@@ -47,5 +47,20 @@ var seatac = {
 
   showCookieSalesPerHour: function() {
     var hourlysalesContainer = document.getElementById('SeaTac');
+
+    for (var i = 0; i < time.length; i++){
+      var calcCookiesPerHour = Math.round(this.randCustPerHour() * this.avgCookieSale);
+      this.cookiesSoldPerHourArray.push(time[i] + ': ' + calcCookiesPerHour);
+      var salesElement = document.createElement('li');
+      salesElement.textContent = this.cookiesSoldPerHourArray [i];
+
+      hourlysalesContainer.appendChild(salesElement);
+    }
   }
 };
+seatac.showCookieSalesPerHour();
+
+
+// Location 3
+
+var seattlecenter;
