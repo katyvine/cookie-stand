@@ -88,3 +88,32 @@ var seattlecenter = {
   }
 };
 seattlecenter.showCookieSalesPerHour();
+
+//Location 4
+
+var caphill = {
+  locationName: 'Capitol Hill',
+  minCust: 20,
+  maxCust: 38,
+  avgCookieSale: 2.3,
+  cookiesSoldPerHourArray: [],
+
+  randCustPerHour: function(){
+    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+  },
+
+  showCookieSalesPerHour: function(){
+    var hourlysalesContainer = document.getElementById('CapHill');
+
+    for (var i = 0; i < time.length; i++){
+      var calcCookiesPerHour = Math.round(this.randCustPerHour()* this.avgCookieSale);
+      this.cookiesSoldPerHourArray.push(time[i] + ': ' + calcCookiesPerHour);
+      var salesElement = document.createElement ('li');
+      salesElement.textContent = this.cookiesSoldPerHourArray [i];
+
+      hourlysalesContainer.appendChild(salesElement);
+
+    }
+  }
+};
+caphill.showCookieSalesPerHour();
