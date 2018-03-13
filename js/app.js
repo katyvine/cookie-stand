@@ -117,3 +117,31 @@ var caphill = {
   }
 };
 caphill.showCookieSalesPerHour();
+
+// Location 5
+
+var alki = {
+  locationName: 'Alki',
+  minCust: 2,
+  maxCust: 16,
+  avgCookieSale: 4.6,
+  cookiesSoldPerHourArray: [],
+
+  randCustPerHour: function(){
+    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+  },
+
+  showCookieSalesPerHour: function(){
+    var hourlysalesContainer = document.getElementById('Alki');
+
+    for (var i = 0; i < time.length; i++){
+      var calcCookiesPerHour = Math.round(this.randCustPerHour()* this.avgCookieSale);
+      this.cookiesSoldPerHourArray.push(time[i] + ': ' + calcCookiesPerHour);
+      var salesElement = document.createElement ('li');
+      salesElement.textContent = this.cookiesSoldPerHourArray [i];
+
+      hourlysalesContainer.appendChild(salesElement);
+    }
+  }
+};
+alki.showCookieSalesPerHour();
