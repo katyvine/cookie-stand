@@ -63,4 +63,28 @@ seatac.showCookieSalesPerHour();
 
 // Location 3
 
-var seattlecenter;
+var seattlecenter = {
+  locationName: 'Seattle Center',
+  minCust: 11,
+  maxCust: 38,
+  avgCookieSale: 3.7,
+  cookiesSoldPerHourArray: [],
+
+  randCustPerHour: function(){
+    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+  },
+
+  showCookieSalesPerHour: function(){
+    var hourlysalesContainer = document.getElementById('SeaCenter');
+
+    for (var i = 0; i < time.length; i++){
+      var calcCookiesPerHour = Math.round(this.randCustPerHour()* this.avgCookieSale);
+      this.cookiesSoldPerHourArray.push(time[i] + ': ' + calcCookiesPerHour);
+      var salesElement = document.createElement ('li');
+      salesElement.textContent = this.cookiesSoldPerHourArray [i];
+
+      hourlysalesContainer.appendChild(salesElement);
+    }
+  }
+};
+seattlecenter.showCookieSalesPerHour();
