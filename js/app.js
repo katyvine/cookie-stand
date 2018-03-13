@@ -13,7 +13,7 @@ var pike = {
   cookiesSoldPerHourArray: [],
 
   randCustPerHour: function(){
-    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+    return Math.floor(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
   },
 
   showCookieSalesPerHour: function() {
@@ -42,7 +42,7 @@ var seatac = {
   cookiesSoldPerHourArray: [],
 
   randCustPerHour: function(){
-    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+    return Math.floor(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
   },
 
   showCookieSalesPerHour: function() {
@@ -71,7 +71,7 @@ var seattlecenter = {
   cookiesSoldPerHourArray: [],
 
   randCustPerHour: function(){
-    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+    return Math.floor(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
   },
 
   showCookieSalesPerHour: function(){
@@ -99,7 +99,7 @@ var caphill = {
   cookiesSoldPerHourArray: [],
 
   randCustPerHour: function(){
-    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+    return Math.floor(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
   },
 
   showCookieSalesPerHour: function(){
@@ -128,7 +128,7 @@ var alki = {
   cookiesSoldPerHourArray: [],
 
   randCustPerHour: function(){
-    return Math.round(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
+    return Math.floor(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
   },
 
   showCookieSalesPerHour: function(){
