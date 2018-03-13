@@ -11,6 +11,7 @@ var pike = {
   maxCust: 65,
   avgCookieSale: 6.3,
   cookiesSoldPerHourArray: [],
+  totalDailyCookies: 0,
 
   randCustPerHour: function(){
     return Math.floor(Math.random()*(this.maxCust - this.minCust+1)) + this.minCust;
@@ -19,17 +20,29 @@ var pike = {
   showCookieSalesPerHour: function() {
     var hourlysalesContainer = document.getElementById('Pike');
 
+
     for (var i = 0; i < time.length; i++){
       var calcCookiesPerHour = Math.round(this.randCustPerHour() * this.avgCookieSale);
       this.cookiesSoldPerHourArray.push(time[i] + ': ' + calcCookiesPerHour);
+
       var salesElement = document.createElement('li');
       salesElement.textContent = this.cookiesSoldPerHourArray[i];
 
       hourlysalesContainer.appendChild(salesElement);
+
+      this.totalDailyCookies += calcCookiesPerHour;
+
     }
+    var totalElement = document.createElement('li');
+    totalElement.textContent = 'Total: ' + this.totalDailyCookies + ' cookies!';
+    hourlysalesContainer.appendChild(totalElement);
+
   }
 };
 pike.showCookieSalesPerHour();
+
+pike.totalDailyCookies;
+console.log (pike.totalDailyCookies);
 
 
 // Location 2
