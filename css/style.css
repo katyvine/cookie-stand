@@ -1,6 +1,8 @@
 body {
   background-color: aqua;
-  color: salmon
+  color: salmon;
+  font-family:'Dosis', sans-serif;
+  margin: 15px;
 }
 
 h1 {
@@ -15,21 +17,22 @@ p {
   font-family: cursive;
 }
 
-/* taken from demo to make it readable */
-
-
 table {
-	border: 10px solid #4ABDAC;
-	empty-cells: hide;
+	border: 3px solid black;
+  empty-cells: show;
+  margin: 10px;
 }
 
 td {
-	padding: 10px;
+	padding: 3px;
   border: 1px solid black;
-  background: white;
+  background: lightcyan;
 }
 
 th {
-	background-color: #F7B733;
-	color: #76323F;
+  background-color: rgb(165, 162, 158);
+  border: 1px solid black;
+  color: black;
+  border-bottom: 2px, solid, black;
+  padding: 3px;
 }
