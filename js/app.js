@@ -39,12 +39,8 @@ Store.prototype.calcCookiesPerHour = function (){
     this.cookiesSoldPerHourArray.push(calcCookiesPerHour);
 
     totalDailyCookies += calcCookiesPerHour;
-    // console.log ('array: ' + this.cookiesSoldPerHourArray[0]);
-    // console.log('total daily cookies ' + totalDailyCookies);
   }
   return totalDailyCookies;
-
-
 };
 
 
@@ -98,28 +94,6 @@ function hours (){
   hourlysalesContainer.appendChild(trElement);
 }
 
-//daily total footer
-// nested for loop
-//TODO: code for daily footer not working
-
-// Store.prototype.dailyTotal = function (){
-//   var tdElement = document.createElement('td');
-//   var trElement = document.createElement('tr');
-
-//   for (var i = 0; i < time.length; i++){
-//     var hourlyTotal = (this.cookiesSoldPerHourArray[0]);
-//     console.log(this.cookiesSoldPerHourArray[0]);
-
-
-//     trElement.appendChild(tdElement);
-//     console.log(tdElement);
-//   }
-
-
-//   hourlysalesContainer.appendChild(trElement);
-// };
-
-
 // create location instances
 var pike = new Store('1st and Pike', 23, 65, 6.3);
 var seatac = new Store('SeaTac', 2, 24, 1.2);
@@ -130,23 +104,38 @@ var alki = new Store('Alki', 2, 16, 4.6);
 // create hourly total, after creation of instances to populate store array
 // make method for total hourly cookie count
 function hourlyTotalCalc (){
+
+  var title = document.createElement('td');
+  var trElement = document.createElement('tr');
+
+  title.textContent = 'Hourly Totals';
+  trElement.appendChild(title);
+
   var grandTotal = 0;
   for (var i = 0; i < time.length; i++){
     var hourlyTotal = 0;
     for (var j = 0; j < storeArray.length; j++){
 
+      var tdElement = document.createElement('td');
+
       hourlyTotal += storeArray[j].cookiesSoldPerHourArray[i];
-      // console.log ('store array at j: ' + storeArray[j].cookiesSoldPerHourArray);
 
     }
+    tdElement.textContent = hourlyTotal;
+    trElement.appendChild(tdElement);
+
     grandTotal += hourlyTotal;
     console.log('hourly total: ' + hourlyTotal);
   }
+  var grandElement = document.createElement('td');
+
+  grandElement.textContent = grandTotal;
+  trElement.appendChild(grandElement);
+
   console.log(grandTotal);
+
+  hourlysalesContainer.appendChild(trElement);
 }
-
-
-console.log (storeArray.length);
 
 // function to render all locations
 function callAllLocations(){
@@ -156,7 +145,6 @@ function callAllLocations(){
   seattlecenter.render();
   caphill.render();
   alki.render();
-  // dailyTotal();
   hourlyTotalCalc();
 }
 
@@ -172,5 +160,3 @@ hourlysalesContainer.addEventListener('submit', addNewLocation);
 
 // call locaiton function
 callAllLocations();
-
-console.log (storeArray.length);
