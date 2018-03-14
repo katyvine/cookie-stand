@@ -9,7 +9,8 @@ var storeArray = [];
 // access the table with id 'location-data'
 var hourlysalesContainer = document.getElementById('location-data');
 
-// access form to get
+// access form to attache event listener
+var addStoreForm = document.getElementById(store-form);
 
 // build constructor to make location objects
 
