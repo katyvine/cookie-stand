@@ -10,7 +10,7 @@ var storeArray = [];
 var hourlysalesContainer = document.getElementById('location-data');
 
 // access form to attache event listener
-var addStoreForm = document.getElementById(store-form);
+var addStoreForm = document.getElementById('store-form');
 
 // build constructor to make location objects
 
@@ -126,38 +126,57 @@ function hourlyTotalCalc (){
     trElement.appendChild(tdElement);
 
     grandTotal += hourlyTotal;
-    console.log('hourly total: ' + hourlyTotal);
+    // console.log('hourly total: ' + hourlyTotal);
   }
   var grandElement = document.createElement('td');
 
   grandElement.textContent = grandTotal;
   trElement.appendChild(grandElement);
 
-  console.log(grandTotal);
+  // console.log(grandTotal);
 
   hourlysalesContainer.appendChild(trElement);
 }
 
 // function to render all locations
 function callAllLocations(){
-  hours();
-  pike.render();
-  seatac.render();
-  seattlecenter.render();
-  caphill.render();
-  alki.render();
-  hourlyTotalCalc();
+  for(var i in storeArray){
+    storeArray[i].render();
+  }
+
+  // hours();
+  // pike.render();
+  // seatac.render();
+  // seattlecenter.render();
+  // caphill.render();
+  // alki.render();
+  // hourlyTotalCalc();
 }
+
 
 //event listener's callback function
 function addNewLocation(event){
   event.preventDefault(); //prevent from total form refresh
-  console.log(event.target);
+
+
+  var newStore = event.target.storeName.value;
+  var newMinCust = parseInt(event.target.minCust.value);
+  var newMaxCust = parseInt(event.target.maxCust.value);
+  var newAvgSale = parseInt(event.target.avgSale.value);
+
+  new Store(newStore, newMinCust, newMaxCust, newAvgSale);
+
+  hourlysalesContainer.innerHTML = '';
+  hours();
+  callAllLocations();
+  hourlyTotalCalc();
 }
 
 //add event listener
-hourlysalesContainer.addEventListener('submit', addNewLocation);
+addStoreForm.addEventListener('submit', addNewLocation);
 
 
 // call locaiton function
+hours();
 callAllLocations();
+hourlyTotalCalc();
