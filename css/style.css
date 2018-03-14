@@ -1,6 +1,8 @@
 body {
   background-color: aqua;
-  color: salmon
+  color: salmon;
+  font-family:'Dosis', sans-serif;
+  margin: 15px;
 }
 
 h1 {
@@ -13,4 +15,24 @@ h2 {
 p {
   font-size: 15px;
   font-family: cursive;
+}
+
+table {
+	border: 3px solid black;
+  empty-cells: show;
+  margin: 10px;
+}
+
+td {
+	padding: 3px;
+  border: 1px solid black;
+  background: lightcyan;
+}
+
+th {
+  background-color: rgb(165, 162, 158);
+  border: 1px solid black;
+  color: black;
+  border-bottom: 2px, solid, black;
+  padding: 3px;
 }
