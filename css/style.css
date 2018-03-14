@@ -14,3 +14,22 @@ p {
   font-size: 15px;
   font-family: cursive;
 }
+
+/* taken from demo to make it readable */
+
+
+table {
+	border: 10px solid #4ABDAC;
+	empty-cells: hide;
+}
+
+td {
+	padding: 10px;
+  border: 1px solid black;
+  background: white;
+}
+
+th {
+	background-color: #F7B733;
+	color: #76323F;
+}
