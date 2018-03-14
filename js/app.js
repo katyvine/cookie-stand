@@ -81,12 +81,14 @@ function hours (){
   thElement.textContent = 'Location';
   trElement.appendChild(thElement);
 
-  for (var i = 0; i < time.length; i++){
+  for (var i = 0; i <= time.length; i++){
     thElement = document.createElement('th');
     thElement.textContent = time[i];
     trElement.appendChild(thElement);
 
   }
+  thElement.textContent = 'Daily Total';
+  trElement.appendChild(thElement);
 
   hourlysalesContainer.appendChild(trElement);
 }
