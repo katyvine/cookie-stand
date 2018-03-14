@@ -9,6 +9,8 @@ var storeArray = [];
 // access the table with id 'location-data'
 var hourlysalesContainer = document.getElementById('location-data');
 
+// access form to get
+
 // build constructor to make location objects
 
 function Store(locationName, minCust, maxCust, avgCookieSale) {
@@ -37,12 +39,14 @@ Store.prototype.calcCookiesPerHour = function (){
     this.cookiesSoldPerHourArray.push(calcCookiesPerHour);
 
     totalDailyCookies += calcCookiesPerHour;
-    console.log (this.cookiesSoldPerHourArray[0]);
+    // console.log ('array: ' + this.cookiesSoldPerHourArray[0]);
+    // console.log('total daily cookies ' + totalDailyCookies);
   }
   return totalDailyCookies;
 
 
 };
+
 
 // make render() method on the constructor's prototype
 
@@ -73,6 +77,7 @@ Store.prototype.render = function() {
   hourlysalesContainer.appendChild(trElement);
 };
 
+
 //hours header
 function hours (){
   var trElement = document.createElement('tr');
@@ -81,19 +86,21 @@ function hours (){
   thElement.textContent = 'Location';
   trElement.appendChild(thElement);
 
-  for (var i = 0; i < time.length; i++){
+  for (var i = 0; i <= time.length; i++){
     thElement = document.createElement('th');
     thElement.textContent = time[i];
     trElement.appendChild(thElement);
 
   }
+  thElement.textContent = 'Daily Totals';
+  trElement.appendChild(thElement);
 
   hourlysalesContainer.appendChild(trElement);
 }
 
 //daily total footer
 // nested for loop
-//TODO: fode for daily footer not working
+//TODO: code for daily footer not working
 
 // Store.prototype.dailyTotal = function (){
 //   var tdElement = document.createElement('td');
@@ -120,6 +127,27 @@ var seattlecenter = new Store('Seattle Center', 11, 38, 3.7);
 var caphill = new Store('Capitol hill', 20, 38, 2.3);
 var alki = new Store('Alki', 2, 16, 4.6);
 
+// create hourly total, after creation of instances to populate store array
+// make method for total hourly cookie count
+function hourlyTotalCalc (){
+  var grandTotal = 0;
+  for (var i = 0; i < time.length; i++){
+    var hourlyTotal = 0;
+    for (var j = 0; j < storeArray.length; j++){
+
+      hourlyTotal += storeArray[j].cookiesSoldPerHourArray[i];
+      // console.log ('store array at j: ' + storeArray[j].cookiesSoldPerHourArray);
+
+    }
+    grandTotal += hourlyTotal;
+    console.log('hourly total: ' + hourlyTotal);
+  }
+  console.log(grandTotal);
+}
+
+
+console.log (storeArray.length);
+
 // function to render all locations
 function callAllLocations(){
   hours();
@@ -129,7 +157,20 @@ function callAllLocations(){
   caphill.render();
   alki.render();
   // dailyTotal();
+  hourlyTotalCalc();
 }
+
+//event listener's callback function
+function addNewLocation(event){
+  event.preventDefault(); //prevent from total form refresh
+  console.log(event.target);
+}
+
+//add event listener
+hourlysalesContainer.addEventListener('submit', addNewLocation);
+
 
 // call locaiton function
 callAllLocations();
+
+console.log (storeArray.length);
