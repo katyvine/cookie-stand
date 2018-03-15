@@ -1,20 +1,22 @@
 body {
   background-color: aqua;
   color: salmon;
-  font-family:'Dosis', sans-serif;
+  font-family: 'Poiret One';
   margin: 15px;
 }
 
 h1 {
-  font-size:30px
+  font-size:70px;
+  text-align: center;
 }
 h2 {
-  font-size: 25px
+  font-size: 25px;
+  text-align: center;
 }
 
 p {
   font-size: 15px;
-  font-family: cursive;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 table {
