@@ -41,14 +41,15 @@ Store.prototype.calcCookiesPerHour = function (){
 
     totalDailyCookies += calcCookiesPerHour;
   }
-  return totalDailyCookies;
+  this.totalDailySales = totalDailyCookies;
+  // return totalDailyCookies;
 };
 
 
 // make render() method on the constructor's prototype
 
 Store.prototype.render = function() {
-  var totalCookie = this.calcCookiesPerHour();
+  // var totalCookie = this.calcCookiesPerHour();
 
   var trElement = document.createElement('tr');
 
@@ -68,7 +69,7 @@ Store.prototype.render = function() {
     trElement.appendChild(tdElement);
   }
   tdElement = document.createElement('td');
-  tdElement.textContent = totalCookie;
+  tdElement.textContent = this.totalDailySales;
   trElement.appendChild(tdElement);
 
   hourlysalesContainer.appendChild(trElement);
@@ -141,6 +142,7 @@ function hourlyTotalCalc (){
 // function to render all locations
 function callAllLocations(){
   for(var i in storeArray){
+    storeArray[i].calcCookiesPerHour();
     storeArray[i].render();
   }
 
@@ -164,11 +166,13 @@ function addNewLocation(event){
   var newMaxCust = parseInt(event.target.maxCust.value);
   var newAvgSale = parseInt(event.target.avgSale.value);
 
-  new Store(newStore, newMinCust, newMaxCust, newAvgSale);
+  new Store(newStore, newMinCust, newMaxCust, newAvgSale).calcCookiesPerHour();
 
   hourlysalesContainer.innerHTML = '';
   hours();
-  callAllLocations();
+  for(var i in storeArray){
+    storeArray[i].render();
+  }
   hourlyTotalCalc();
 }
 
