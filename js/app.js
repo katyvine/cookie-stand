@@ -9,6 +9,9 @@ var storeArray = [];
 // access the table with id 'location-data'
 var hourlysalesContainer = document.getElementById('location-data');
 
+// access form to attache event listener
+var addStoreForm = document.getElementById('store-form');
+
 // build constructor to make location objects
 
 function Store(locationName, minCust, maxCust, avgCookieSale) {
@@ -37,17 +40,16 @@ Store.prototype.calcCookiesPerHour = function (){
     this.cookiesSoldPerHourArray.push(calcCookiesPerHour);
 
     totalDailyCookies += calcCookiesPerHour;
-    console.log (this.cookiesSoldPerHourArray[0]);
   }
-  return totalDailyCookies;
-
-
+  this.totalDailySales = totalDailyCookies;
+  // return totalDailyCookies;
 };
+
 
 // make render() method on the constructor's prototype
 
 Store.prototype.render = function() {
-  var totalCookie = this.calcCookiesPerHour();
+  // var totalCookie = this.calcCookiesPerHour();
 
   var trElement = document.createElement('tr');
 
@@ -67,11 +69,12 @@ Store.prototype.render = function() {
     trElement.appendChild(tdElement);
   }
   tdElement = document.createElement('td');
-  tdElement.textContent = totalCookie;
+  tdElement.textContent = this.totalDailySales;
   trElement.appendChild(tdElement);
 
   hourlysalesContainer.appendChild(trElement);
 };
+
 
 //hours header
 function hours (){
@@ -87,33 +90,13 @@ function hours (){
     trElement.appendChild(thElement);
 
   }
-  thElement.textContent = 'Daily Total';
+
+  thElement.textContent = 'Daily Totals';
+
   trElement.appendChild(thElement);
 
   hourlysalesContainer.appendChild(trElement);
 }
-
-//daily total footer
-// nested for loop
-//TODO: fode for daily footer not working
-
-// Store.prototype.dailyTotal = function (){
-//   var tdElement = document.createElement('td');
-//   var trElement = document.createElement('tr');
-
-//   for (var i = 0; i < time.length; i++){
-//     var hourlyTotal = (this.cookiesSoldPerHourArray[0]);
-//     console.log(this.cookiesSoldPerHourArray[0]);
-
-
-//     trElement.appendChild(tdElement);
-//     console.log(tdElement);
-//   }
-
-
-//   hourlysalesContainer.appendChild(trElement);
-// };
-
 
 // create location instances
 var pike = new Store('1st and Pike', 23, 65, 6.3);
@@ -122,16 +105,84 @@ var seattlecenter = new Store('Seattle Center', 11, 38, 3.7);
 var caphill = new Store('Capitol hill', 20, 38, 2.3);
 var alki = new Store('Alki', 2, 16, 4.6);
 
-// function to render all locations
-function callAllLocations(){
-  hours();
-  pike.render();
-  seatac.render();
-  seattlecenter.render();
-  caphill.render();
-  alki.render();
-  // dailyTotal();
+// create hourly total, after creation of instances to populate store array
+// make method for total hourly cookie count
+function hourlyTotalCalc (){
+
+  var title = document.createElement('td');
+  var trElement = document.createElement('tr');
+
+  title.textContent = 'Hourly Totals';
+  trElement.appendChild(title);
+
+  var grandTotal = 0;
+  for (var i = 0; i < time.length; i++){
+    var hourlyTotal = 0;
+    for (var j = 0; j < storeArray.length; j++){
+
+      var tdElement = document.createElement('td');
+
+      hourlyTotal += storeArray[j].cookiesSoldPerHourArray[i];
+
+    }
+    tdElement.textContent = hourlyTotal;
+    trElement.appendChild(tdElement);
+
+    grandTotal += hourlyTotal;
+    // console.log('hourly total: ' + hourlyTotal);
+  }
+  var grandElement = document.createElement('td');
+
+  grandElement.textContent = grandTotal;
+  trElement.appendChild(grandElement);
+
+  // console.log(grandTotal);
+
+  hourlysalesContainer.appendChild(trElement);
 }
 
+// function to render all locations
+function callAllLocations(){
+  for(var i in storeArray){
+    storeArray[i].calcCookiesPerHour();
+    storeArray[i].render();
+  }
+
+  // hours();
+  // pike.render();
+  // seatac.render();
+  // seattlecenter.render();
+  // caphill.render();
+  // alki.render();
+  // hourlyTotalCalc();
+}
+
+
+//event listener's callback function
+function addNewLocation(event){
+  event.preventDefault(); //prevent from total form refresh
+
+
+  var newStore = event.target.storeName.value;
+  var newMinCust = parseInt(event.target.minCust.value);
+  var newMaxCust = parseInt(event.target.maxCust.value);
+  var newAvgSale = parseInt(event.target.avgSale.value);
+
+  new Store(newStore, newMinCust, newMaxCust, newAvgSale).calcCookiesPerHour();
+
+  hourlysalesContainer.innerHTML = '';
+  hours();
+  for(var i in storeArray){
+    storeArray[i].render();
+  }
+  hourlyTotalCalc();
+}
+
+//add event listener
+addStoreForm.addEventListener('submit', addNewLocation);
+
+
 // call locaiton function
+hours();
 callAllLocations();
+hourlyTotalCalc();
