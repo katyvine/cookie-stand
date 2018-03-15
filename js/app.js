@@ -90,7 +90,9 @@ function hours (){
     trElement.appendChild(thElement);
 
   }
+
   thElement.textContent = 'Daily Totals';
+
   trElement.appendChild(thElement);
 
   hourlysalesContainer.appendChild(trElement);
