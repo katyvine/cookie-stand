@@ -1,7 +1,7 @@
 body {
   background-color: rgb(35, 245, 245);
   color: salmon;
-  margin: 15px;
+  /* margin: 15px; */
   font-family: 'Bree Serif', serif;
 }
 
@@ -35,19 +35,29 @@ th {
   border-bottom: 2px, solid, black;
   padding: 3px;
 }
+
+nav ul li {
+  display: inline-block;
+  border: 2px solid grey;
+  background: white;
+  padding: 5px;
+  width: 30%;
+}
 .card {
   padding: 1.25em;
   display: table-cell;
 }
-.card.logo.figure {
+.card.logo figure {
   width: 100vw;
-  background-color: white;
-  border: solid;
+  margin: 10px;
+  /* background-color: white; */
+ 
 }
 
 .card header {
   font-size:70px;
   text-align: center;
+  /* width: 100%; */
 }
 
 .deck.locations{
