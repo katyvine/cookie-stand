@@ -5,19 +5,11 @@ body {
   margin: 15px;
 }
 
-h1 {
-  font-size:70px;
-  text-align: center;
-}
 h2 {
   font-size: 25px;
   text-align: center;
 }
 
-p {
-  font-size: 15px;
-  font-family: 'Comfortaa', sans-serif;
-}
 
 table {
 	border: 3px solid black;
@@ -38,3 +30,39 @@ th {
   border-bottom: 2px, solid, black;
   padding: 3px;
 }
+.card {
+  padding: 1.25em;
+  display: table-cell;
+}
+
+.card header {
+  font-size:70px;
+  text-align: center;
+}
+
+.card.locations{
+  background: silver;
+  width: 100vw;
+}
+
+.card h2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+.card h3{
+  font-size: 25px;
+  font-weight: bold;
+  color: peru;
+}
+
+.card.newStore img{
+  width: 8em;
+}
+.card p {
+  font-size: 15px;
+  font-family: 'Comfortaa', sans-serif;
+  color: #BC4C34;
+}
+
+
