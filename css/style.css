@@ -21,6 +21,11 @@ td {
 	padding: 3px;
   border: 1px dotted black;
   background: lightcyan;
+  text-align: right;
+}
+
+td:nth-child(1) {
+  text-align: right;
 }
 
 th {
