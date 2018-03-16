@@ -1,8 +1,8 @@
 body {
-  background-color: aqua;
+  background-color: rgb(35, 245, 245);
   color: salmon;
-  font-family: 'Poiret One';
   margin: 15px;
+  font-family: 'Bree Serif', serif;
 }
 
 h2 {
@@ -34,6 +34,11 @@ th {
   padding: 1.25em;
   display: table-cell;
 }
+.card.logo.figure {
+  width: 100vw;
+  background-color: white;
+  border: solid;
+}
 
 .card header {
   font-size:70px;
@@ -60,9 +65,28 @@ th {
   width: 8em;
 }
 .card p {
-  font-size: 15px;
-  font-family: 'Comfortaa', sans-serif;
+  font-size: 16px;
+ 
   color: #BC4C34;
+}
+
+.card merch{
+  display: table-cell;
+
+}
+#store-form {
+  border: 3px solid silver;
+  width: 80%;
+  margin: 10px;
+  color: black;
+  
+}
+.card story{  
+  font-size: 16px;
+}
+
+.card.fam img{
+ width: 300px;
 }
 
 
