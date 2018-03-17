@@ -1,27 +1,19 @@
+/* Universal CSS */
+
 body {
-  background-color: aqua;
+  background-color: rgb(35, 245, 245);
   color: salmon;
-  font-family: 'Poiret One';
-  margin: 15px;
+  font-family: 'Bree Serif', serif;
 }
 
-h1 {
-  font-size:70px;
-  text-align: center;
-}
 h2 {
   font-size: 25px;
   text-align: center;
 }
 
-p {
-  font-size: 15px;
-  font-family: 'Comfortaa', sans-serif;
-}
-
+/* CSS for Sales Table page */
 table {
 	border: 3px solid black;
-  empty-cells: show;
   margin: 10px;
 }
 
@@ -29,6 +21,12 @@ td {
 	padding: 3px;
   border: 1px dotted black;
   background: lightcyan;
+  text-align: right;
+}
+
+td:nth-child(1) {
+  text-align: left;
+  color: peru;
 }
 
 th {
@@ -37,4 +35,106 @@ th {
   color: black;
   border-bottom: 2px, solid, black;
   padding: 3px;
+}
+#store-form {
+  border: 1px solid black;
+  background: silver;
+  width: 80%;
+  margin: 10px;
+  color: black;
+  font-size: 12px;
+}
+
+/* CSS for Home Page */
+
+nav ul li {
+  display: inline-block;
+  border: 2px solid grey;
+  background: silver;
+  padding: 5px;
+  width: 30%;
+}
+.card {
+  display: table-cell;
+  padding: 1em;
+}
+.card.logo figure img{
+  width: 90vw;
+  margin: 10px;
+}
+
+.card header {
+  font-size:70px;
+  text-align: center;
+  width: 100%;
+}
+
+.deck.locations{
+  background: silver;
+}
+
+.deck.locations p {
+  font-size: 12px
+}
+
+.card h2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+.card h3{
+  font-size: 25px;
+  font-weight: bold;
+  color: peru;
+  /* background: silver;
+  width: 100%; */
+  padding: 5px;
+}
+
+.card.newStore img{
+  width: 8em;
+}
+.card p {
+  font-size: 16px;
+  color: #BC4C34;
+}
+
+.card.merch{
+  font-size: 10px;
+}
+.card.merch img{
+  border: 3px solid salmon;
+  width: 200px;
+  position: relative;
+  padding: 5px;
+}
+
+.card.story {
+  display: inline;
+}
+.card.story.text {  
+ font-size: 10px;
+}
+
+
+.card.story.chinook img{
+  float: left;
+  margin: 5px;
+  border: 3px solid salmon;
+  height: 150px;
+  padding: 5px;
+ }
+
+.card.fam{
+  font-size: 10px;
+}
+.card.fam img{
+  border: 3px solid salmon;
+  padding: 5px;
+ width: 300px;
+}
+
+#htmlpagelink{
+  margin: 5px;
+  padding: 15px 5px;
 }
